@@ -5,10 +5,8 @@ import android.app.ActivityManager;
 import android.content.Context;
 import android.content.pm.ConfigurationInfo;
 import android.opengl.GLSurfaceView;
-import android.support.v7.app.ActionBarActivity;
+
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.widget.Toast;
 
 
@@ -28,7 +26,7 @@ public class MainActivity extends Activity {
         if(supportGLES2){
             mGLView.setEGLContextClientVersion(2);
 
-            mGLView.setRenderer(new MyRenderer());
+            mGLView.setRenderer(new MyRenderer(this));
             mRendererSet = true;
         } else{
             Toast.makeText(this, "Device cannot support OpenGL ES 2.0.",Toast.LENGTH_SHORT).show();
