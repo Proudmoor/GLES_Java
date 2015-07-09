@@ -17,7 +17,6 @@ public class LoadDataToNative {
                 .order(ByteOrder.nativeOrder());
         final FloatBuffer vertexBuffer = vertexData.asFloatBuffer();
         vertexBuffer.put(vertice);
-        //vertexBuffer.position(0);
         return vertexBuffer;
     }
 
@@ -30,6 +29,5 @@ public class LoadDataToNative {
         vertexBuffer.position(0);
         return vertexBuffer;
     }
-
 
 }
