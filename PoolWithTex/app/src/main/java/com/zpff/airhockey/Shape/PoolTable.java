@@ -2,6 +2,8 @@ package com.zpff.airhockey.Shape;
 
 import android.opengl.GLES20;
 
+import com.zpff.airhockey.GLHelper.TextureUtil;
+
 import java.nio.FloatBuffer;
 
 /**
@@ -47,6 +49,7 @@ public class PoolTable {
     private int mColorInShader;
     private int mProjMatInShader;
 
+
     public PoolTable(){
         vertexBuffer = LoadDataToNative.LoadDataFloat(poolTableVertices);
         vertexBuffer.position(0);
@@ -59,9 +62,7 @@ public class PoolTable {
         GLES20.glEnableVertexAttribArray(mPositionInShader);
         GLES20.glVertexAttribPointer(mPositionInShader, COORDS_PER_VERTEX, GLES20.GL_FLOAT,
                 false, 0, vertexBuffer);
-        //获得颜色属性位置，并复赋值到mColorInShader上
-        //mColorInShader = GLES20.glGetUniformLocation(shaderProgram, "vColor");
-        //GLES20.glUniform4f(mColorInShader, 0.0f, 1.0f, 0.0f, 1.0f);
+
         mColorInShader = GLES20.glGetAttribLocation(shaderProgram, "inColor");
         GLES20.glEnableVertexAttribArray(mColorInShader);
         GLES20.glVertexAttribPointer(mColorInShader, COORDS_PER_COLOR, GLES20.GL_FLOAT,

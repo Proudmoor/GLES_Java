@@ -7,6 +7,7 @@ import android.opengl.Matrix;
 
 import com.zpff.airhockey.GLHelper.ReadShaderFromResource;
 import com.zpff.airhockey.GLHelper.ShaderUtil;
+import com.zpff.airhockey.GLHelper.TextureUtil;
 import com.zpff.airhockey.Shape.PoolTable;
 
 import javax.microedition.khronos.egl.EGLConfig;
@@ -23,6 +24,8 @@ public class MyRenderer implements GLSurfaceView.Renderer {
     private float[] mProjectionMatrix = new float[16];
     private float[] mViewMatrix = new float[16];
     private float[] mMVPMatrix = new float[16];
+
+    private int mTexture;
 
     public MyRenderer(Context context){
         this.mContext = context;
@@ -63,5 +66,9 @@ public class MyRenderer implements GLSurfaceView.Renderer {
         mProgram = ShaderUtil.linkProgram(vertexShader, fragShader);
         ShaderUtil.validateProgram(mProgram);
         GLES20.glUseProgram(mProgram);
+    }
+
+    private void loadTexture(){
+        mTexture = TextureUtil.loadTexture(mContext, R.drawable.pooltable);
     }
 }
